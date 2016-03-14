@@ -7,4 +7,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="string_main_title">简单笔记：View的事件</string>
+    <string name="string_main_content">内容</string>
+    <string name="string_main_label">Android</string>
+    <string name="string_main_date">2016年3月6日</string>
 </resources>

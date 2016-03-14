@@ -8,12 +8,19 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.shuanghua.shua.R;
+import com.shuanghua.shua.model.bean.MainListBean;
+import com.shuanghua.shua.presenter.adapter.MainListAdapter;
 import com.shuanghua.shua.view.widget.StatusBarCompat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -32,6 +39,8 @@ public class MainActivity extends BaseActivity
     DrawerLayout drawer;
     @InjectView(R.id.nav_view)
     NavigationView navigationView;
+    @InjectView(R.id.id_appbar_recyclerView)
+    EasyRecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +51,23 @@ public class MainActivity extends BaseActivity
         setToolbar();
         setToggle();
         navigationView.setNavigationItemSelectedListener(this);
+        setRecyclerView();
+    }
+
+    private void setRecyclerView() {
+
+        List list = new ArrayList();
+        for (int i = 0; i < 15; i++) {
+            list.add(new MainListBean());
+        }
+
+        mRecyclerView.setRefreshing(true,true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(new MainListAdapter(this,list));
     }
 
     private void setToolbar() {
-        //mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.toolbar_titel));
+        //mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.toolbar_title));
         setSupportActionBar(toolbar);
         mCollapsingToolbarLayout.setTitleEnabled(false);
         StatusBarCompat.compat(this);
