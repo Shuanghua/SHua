@@ -1,5 +1,7 @@
 package com.shuanghua.shua.view.viewHolder;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -8,6 +10,7 @@ import com.shuanghua.shua.R;
 import com.shuanghua.shua.model.bean.MainListBean;
 
 /**
+ * Main ViewHolder
  * Created by ShuangHua on 2016/3/13.
  */
 public class MainListViewHolder extends BaseViewHolder<MainListBean> {
@@ -27,9 +30,19 @@ public class MainListViewHolder extends BaseViewHolder<MainListBean> {
 
     @Override
     public void setData(MainListBean data) {
-        mTitle.setText(R.string.string_main_title);
-        mContent.setText(R.string.string_main_content);
-        mLabel.setText(R.string.string_main_label);
-        mDate.setText(R.string.string_main_date);
+
+        AssetManager manager = getContext().getAssets();
+        Typeface titleTTF = Typeface.createFromAsset(manager, "fonts/Roboto-Black.ttf");
+        Typeface contentTTF = Typeface.createFromAsset(manager, "fonts/RobotoCondensed-Regular.ttf");
+
+        mTitle.setTypeface(titleTTF);
+        mContent.setTypeface(contentTTF);
+
+        mTitle.setText(data.getTitle());
+        mContent.setText(data.getContent());
+        mLabel.setText(data.getLabel());
+        mDate.setText(data.getDate());
+
+
     }
 }

@@ -11,4 +11,7 @@
     <string name="string_main_content">内容</string>
     <string name="string_main_label">Android</string>
     <string name="string_main_date">2016年3月6日</string>
+    <string name="title_activity_ab">AB</string>
+    <string name="view_empty">暂无数据</string>
+    <string name="view_progress">内容加载中</string>
 </resources>
